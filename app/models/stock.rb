@@ -9,7 +9,7 @@ class Stock < ActiveRecord::Base
     
     new_stock = new(ticker: looked_up_stock.symbol, name: looked_up_stock.name)
     new_stock.last_price = new_stock.price
-    new_stock
+    return new_stock
   end
   
   def price
@@ -19,6 +19,6 @@ class Stock < ActiveRecord::Base
     opening_price = StockQuote::Stock.quote(ticker).open
     return "#{opening_price} (Opening)" if opening_price
     
-    'Unavailable'
+    return 'Unavailable'
   end
 end
